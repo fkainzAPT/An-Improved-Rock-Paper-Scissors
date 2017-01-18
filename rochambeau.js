@@ -82,6 +82,6 @@ function storePlayerChoice(choice) {
 
 function storeComputerChoice() {
     // Generate computer's random choice
-    computerChoice = Math.floor(Math.random() * 3);
+    computerChoice = Math.floor(Math.random() * 5); // 4 choices [0, 1, 2, 3 , 4]
     console.log("Computer choice = " + computerChoice);
 }
