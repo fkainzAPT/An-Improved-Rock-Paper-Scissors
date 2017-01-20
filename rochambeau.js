@@ -1,6 +1,8 @@
 // This is the varaible that stores the score.
 // score[0] = wins, score[1] = ties, score[2] = losses
 var score = [0, 0, 0];
+//roundScore[0] = rounds won, roundScore[1] = rounds lost
+var roundScore = [0, 0];
 // The variables store the current player's and computer's choices
 // 0 = Rock, 1 = Paper, 2 = Scissors
 var playerChoice;
@@ -35,10 +37,12 @@ function playGame() {
     }
 }
 
-function displayScoreBoard(winsId, lossesId, tiesId) {
+function displayScoreBoard(winsId, lossesId, tiesId, rWinsId, rLossesId) {
     document.getElementById(winsId).innerHTML = score[0];
     document.getElementById(lossesId).innerHTML = score[2];
     document.getElementById(tiesId).innerHTML = score[1];
+    document.getElementById(rWinsId).innerHTML = roundScore[0];
+    document.getElementById(rLossesId).innerHTML = roundScore[1];
 }
 
 function updateScore(val) {
@@ -57,11 +61,13 @@ function displayGameResult(resultId) {
     if (result == 1) {
         // Display that it was a win
         updateScore(0);
+        displayRoundResults();
         document.getElementById(resultId).innerHTML = message + "YOU WIN!";
         document.getElementById(resultId).className = "alert alert-success";
     }
     else if (result == -1) {
         updateScore(2);
+        displayRoundResults();
         // Display that it was a loss
         document.getElementById(resultId).innerHTML = message + "YOU LOOSE! ";
         document.getElementById(resultId).className = "alert alert-danger";
@@ -69,8 +75,28 @@ function displayGameResult(resultId) {
     else {
         // Display that it was a tie
         updateScore(1);
+        displayRoundResults();
         document.getElementById(resultId).innerHTML = message + "A tie. ";
         document.getElementById(resultId).className = "alert alert-info";
+    }
+}
+
+function displayRoundResults() {
+    if ((score[0] + score[2]) >= 3) {
+        if (score[0] > score[2]) {
+            //round was won and reset the score
+            ++roundScore[0];
+            score[0] = 0;
+            score[1] = 0;
+            score[2] = 0;
+        }
+        else if (score[2] > score[0]) {
+            //round was lost and reset the socre
+            ++roundScore[1];
+            score[0] = 0;
+            score[1] = 0;
+            score[2] = 0;
+        }
     }
 }
 
