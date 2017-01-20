@@ -20,13 +20,48 @@ function playGame() {
         console.log("win");
         return 1;
     }
+    else if (playerChoice == 0 && computerChoice == 3) {
+        // Rock beats lizard - a win!
+        console.log("win");
+        return 1;
+    }
     else if (playerChoice == 1 && computerChoice == 0) {
         // Paper beats scissors - a win!
         console.log("win");
         return 1;
     }
+    else if (playerChoice == 1 && computerChoice == 4) {
+        // Paper beats spock - a win!
+        console.log("win");
+        return 1;
+    }
     else if (playerChoice == 2 && computerChoice == 1) {
         // Scissors beats paper - a win!
+        console.log("win");
+        return 1;
+    }
+    else if (playerChoice == 2 && computerChoice == 3) {
+        // Scissors beats lizard - a win!
+        console.log("win");
+        return 1;
+    }
+    else if (playerChoice == 3 && computerChoice == 1) {
+        // lizard beats paper - a win!
+        console.log("win");
+        return 1;
+    }
+    else if (playerChoice == 3 && computerChoice == 4) {
+        // lizard beats spock - a win!
+        console.log("win");
+        return 1;
+    }
+    else if (playerChoice == 4 && computerChoice == 0) {
+        // spock beats rock - a win!
+        console.log("win");
+        return 1;
+    }
+    else if (playerChoice == 4 && computerChoice == 2) {
+        // spock beats scissors - a win!
         console.log("win");
         return 1;
     }
@@ -51,8 +86,8 @@ function updateScore(val) {
 }
 
 function displayGameResult(resultId) {
-    // Define an array of text labels for the choices 0, 1, 2;
-    var choices = ["Rock", "Paper", "Scissors"];
+    // Define an array of text labels for the choices 0, 1, 2, 3, 4;
+    var choices = ["Rock", "Paper", "Scissors", "Lizard", "Spock"];
     // Now play the game and store the result
     var result = playGame();
     // Create a message for the player
@@ -108,6 +143,7 @@ function storePlayerChoice(choice) {
 
 function storeComputerChoice() {
     // Generate computer's random choice
-    computerChoice = Math.floor(Math.random() * 5); // 4 choices [0, 1, 2, 3 , 4]
+    // 4 choices [0, 1, 2, 3 , 4]
+    computerChoice = Math.floor(Math.random() * 5);
     console.log("Computer choice = " + computerChoice);
 }
